@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Akash Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    section{
+      padding:90px 8%;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(15,23,42,0.95);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-container{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 20px;
+    }
+
+    .logo{
+      font-size:1.5rem;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+    }
+
+    .nav-links a{
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:
+      radial-gradient(circle at top right,#1d4ed8 0%,transparent 30%),
+      radial-gradient(circle at bottom left,#0ea5e9 0%,transparent 30%),
+      #0f172a;
+    }
+
+    .hero-container{
+      max-width:1200px;
+      margin:auto;
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero-text h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .hero-text h1{
+      font-size:3.8rem;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .main-btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#38bdf8;
+      color:#0f172a;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .main-btn:hover{
+      background:white;
+      transform:translateY(-5px);
+    }
+
+    .hero-image{
+      background:rgba(255,255,255,0.05);
+      padding:25px;
+      border-radius:20px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    .hero-image img{
+      width:100%;
+      border-radius:15px;
+      display:block;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-10px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.5rem;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    /* ABOUT */
+
+    .about-container{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .skill{
+      margin-bottom:20px;
+    }
+
+    .skill-head{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:8px;
+    }
+
+    .skill-bar{
+      width:100%;
+      height:10px;
+      background:#1e293b;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .skill-fill{
+      height:100%;
+      background:linear-gradient(to right,#0ea5e9,#38bdf8);
+    }
+
+    /* SERVICES */
+
+    .services-container{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:25px;
+    }
+
+    .service-box{
+      background:#111827;
+      padding:30px 25px;
+      border-radius:20px;
+      transition:0.4s;
+      border:1px solid transparent;
+    }
+
+    .service-box:hover{
+      transform:translateY(-10px);
+      border-color:#38bdf8;
+    }
+
+    .service-icon{
+      font-size:2rem;
+      margin-bottom:15px;
+    }
+
+    .service-box h3{
+      margin-bottom:15px;
+    }
+
+    .service-box p{
+      color:#cbd5e1;
+      line-height:1.7;
+      font-size:0.95rem;
+    }
+
+    /* PROJECTS */
+
+    .projects-container{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:30px;
+    }
+
+    .project-card{
+      background:#111827;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+    }
+
+    .project-content p{
+      color:#cbd5e1;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    .project-btn{
+      display:inline-block;
+      padding:10px 22px;
+      background:#38bdf8;
+      color:#0f172a;
+      border-radius:30px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .project-btn:hover{
+      background:white;
+    }
+
+    /* CONTACT */
+
+    .contact-container{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+    }
+
+    .contact-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:25px;
+    }
+
+    .social-links{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .social-links a{
+      padding:12px 18px;
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:30px;
+      transition:0.3s;
+    }
+
+    .social-links a:hover{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      padding:15px;
+      border:none;
+      outline:none;
+      background:#111827;
+      color:white;
+      border-radius:12px;
+    }
+
+    textarea{
+      min-height:150px;
+      resize:none;
+    }
+
+    button{
+      border:none;
+      cursor:pointer;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:25px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#94a3b8;
+    }
+
+    /* FADE ANIMATION */
+
+    .fade{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1s;
+    }
+
+    .fade.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:992px){
+
+      .hero-container,
+      .about-container,
+      .contact-container{
+        grid-template-columns:1fr;
+      }
+
+      .services-container{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .projects-container{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+    }
+
+    @media(max-width:768px){
+
+      .nav-container{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .services-container{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text h1{
+        font-size:2.3rem;
+      }
+
+      section{
+        padding:80px 6%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <div class="logo">
+        Akash.dev
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-container">
+
+      <div class="hero-text fade">
+
+        <h3>Frontend Developer</h3>
+
+        <h1>
+          Creating Modern Startup Style Websites
+        </h1>
+
+        <p>
+          I build responsive and interactive websites with modern UI,
+          smooth animations and user-friendly experiences.
+        </p>
+
+        <a href="#contact" class="main-btn">
+          Hire Me
+        </a>
+
+      </div>
+
+      <div class="hero-image fade">
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-title fade">
+      <h2>About Me</h2>
+      <p>Know more about my skills and experience</p>
+    </div>
+
+    <div class="about-container">
+
+      <div class="about-text fade">
+
+        <p>
+          I am a passionate frontend developer who enjoys building
+          modern websites and startup landing pages with responsive
+          layouts and smooth user experiences.
+        </p>
+
+        <p>
+          My focus is creating attractive UI designs using clean HTML,
+          CSS and JavaScript code.
+        </p>
+
+      </div>
+
+      <div class="fade">
+
+        <div class="skill">
+
+          <div class="skill-head">
+            <span>HTML</span>
+            <span>95%</span>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-fill" style="width:95%"></div>
+          </div>
+
+        </div>
+
+        <div class="skill">
+
+          <div class="skill-head">
+            <span>CSS</span>
+            <span>90%</span>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-fill" style="width:90%"></div>
+          </div>
+
+        </div>
+
+        <div class="skill">
+
+          <div class="skill-head">
+            <span>JavaScript</span>
+            <span>80%</span>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-fill" style="width:80%"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <div class="section-title fade">
+      <h2>Services</h2>
+      <p>What I provide for clients and startups</p>
+    </div>
+
+    <div class="services-container">
+
+      <div class="service-box fade">
+
+        <div class="service-icon">🎨</div>
+
+        <h3>Web Design</h3>
+
+        <p>
+          Creative and modern website designs with attractive layouts.
+        </p>
+
+      </div>
+
+      <div class="service-box fade">
+
+        <div class="service-icon">💻</div>
+
+        <h3>Development</h3>
+
+        <p>
+          Responsive website development using clean and optimized code.
+        </p>
+
+      </div>
+
+      <div class="service-box fade">
+
+        <div class="service-icon">⚡</div>
+
+        <h3>UI / UX</h3>
+
+        <p>
+          User-focused interfaces with smooth and interactive experiences.
+        </p>
+
+      </div>
+
+      <div class="service-box fade">
+
+        <div class="service-icon">🚀</div>
+
+        <h3>Landing Pages</h3>
+
+        <p>
+          Startup landing pages designed for branding and conversions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="section-title fade">
+      <h2>Projects</h2>
+      <p>Some featured project designs</p>
+    </div>
+
+    <div class="projects-container">
+
+      <div class="project-card fade">
+
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="project-content">
+
+          <h3>Startup Dashboard</h3>
+
+          <p>
+            Responsive admin dashboard design with analytics cards
+            and clean UI sections.
+          </p>
+
+          <a href="#" class="project-btn">
+            View Project
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="project-card fade">
+
+        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="project-content">
+
+          <h3>Creative Portfolio</h3>
+
+          <p>
+            Personal portfolio website with responsive design
+            and smooth animations.
+          </p>
+
+          <a href="#" class="project-btn">
+            View Project
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-title fade">
+      <h2>Contact Me</h2>
+      <p>Let's work together on your next project</p>
+    </div>
+
+    <div class="contact-container">
+
+      <div class="contact-text fade">
+
+        <p>
+          Feel free to contact me for freelance work,
+          startup websites and creative frontend projects.
+        </p>
+
+        <div class="social-links">
+
+         <a href="https://www.linkedin.com/in/akashkumar7703/" target="_blank">
+  LinkedIn
+</a>
+
+<a href="https://github.com/akashhkumar-dev" target="_blank">
+  GitHub
+</a>
+          <a href="#">Instagram</a>
+
+        </div>
+
+      </div>
+
+      <form class="fade">
+
+        <input type="text" placeholder="Your Name" required>
+
+        <input type="email" placeholder="Your Email" required>
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button class="main-btn">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Akash Portfolio | All Rights Reserved
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const fadeElements = document.querySelectorAll(".fade");
+
+    function showOnScroll(){
+
+      fadeElements.forEach(function(item){
+
+        const top = item.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+          item.classList.add("show");
+        }
+
+      });
+
+    }
+
+    window.addEventListener("scroll", showOnScroll);
+
+    showOnScroll();
+
+  </script>
+
+</body>
+</html>
